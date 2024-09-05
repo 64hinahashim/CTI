@@ -28,9 +28,11 @@ var jazzCTIAdapter = (function() {
             .then(response => response.json())
             .then(data => {
                 console.log('Call initiated successfully:', data);
+                call.onSuccess(data); // Invoke success handler
             })
             .catch(error => {
                 console.error('Error initiating call:', error);
+                call.onError(error); // Invoke error handler
             });
         },
         end: function(call) {
